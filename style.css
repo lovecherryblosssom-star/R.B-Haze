@@ -1,0 +1,54 @@
+/* Color Palette: Soft, Premium, Rose-themed */
+:root {
+    --bg-peach: #fff5f5;
+    --rose-pink: #f8bbd0;
+    --deep-coral: #e91e63;
+    --text-soft: #5d4037;
+}
+
+body { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+
+/* PARENT: Header Scaffold */
+.header-parent {
+    display: flex;
+    flex-direction: column; /* Stacks Top row on Nav row */
+    padding: 20px 5%;
+    background-color: var(--bg-peach);
+}
+
+.top-row, .nav-row {
+    display: flex;
+    justify-content: space-between; /* Spreads children to edges */
+    align-items: center;
+    padding: 10px 0;
+}
+
+.logo-box img { height: 60px; }
+
+/* HERO BANNER: Animated */
+.hero-banner {
+    height: 500px;
+    background-color: var(--rose-pink);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Adding subtle entrance animation */
+    animation: fadeIn 1.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.order-btn {
+    padding: 12px 30px;
+    background-color: var(--deep-coral);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.order-btn:hover { background-color: #c2185b; }
