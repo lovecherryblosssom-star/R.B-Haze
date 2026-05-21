@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rose Berry Haze – Artisan Desserts</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
   <style>
 
+    /* ── COLORS ── */
     :root {
       --rose:  #d4527a;
       --blush: #f2a7bc;
@@ -16,385 +18,461 @@
       --soft:  #b07080;
       --white: #ffffff;
       --cream: #fff8f9;
+      --teal:  #3a9a9a;   /* from the GIF */
+      --teal-light: #d0f0f0;
     }
 
+    /* ── RESET ── */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--cream);
-      min-width: 1300px; /* page never shrinks below this */
-    }
-
+    body { font-family: 'Poppins', sans-serif; background: var(--cream); min-width: 1300px; }
     a { text-decoration: none; color: inherit; }
 
-    /* ══════════════════════════════════════════
-       HEADER TOP  —  single row, no clipping
-    ══════════════════════════════════════════ */
-    .header-top {
+
+    /* ════════════════════════════
+       HEADER
+    ════════════════════════════ */
+    .header {
       background: var(--white);
       border-bottom: 1px solid #f0d5dc;
       height: 90px;
+      padding: 0 40px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 40px;
-      /* NO overflow:hidden here — that was cutting badges off */
     }
 
-    /* ── Logo ── */
-    .logo-box {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
-    }
-    .logo-img {
-      width: 60px; height: 60px;
-      border-radius: 50%;
-      object-fit: contain;
-      background: var(--peach);
-      padding: 3px;
-      border: 1.5px solid var(--blush);
-    }
-    .logo-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 20px; font-weight: 600;
-      color: var(--deep); line-height: 1.15; white-space: nowrap;
-    }
-    .logo-sub {
-      font-size: 9px; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--soft); display: block;
-    }
+      /* LEFT side of header */
+      .header-left {
+        display: flex;
+        align-items: center;
+      }
 
-    /* ── Vertical divider ── */
-    .vline {
-      width: 1px; height: 44px;
-      background: #f0d5dc;
-      margin: 0 24px;
-      flex-shrink: 0;
-    }
+        /* Logo block */
+        .logo {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+          .logo img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: contain;
+            background: var(--peach);
+            padding: 3px;
+            border: 1.5px solid var(--blush);
+          }
+          .logo-text span {
+            display: block;
+          }
+          .logo-text .name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--deep);
+            line-height: 1.15;
+            white-space: nowrap;
+          }
+          .logo-text .sub {
+            font-size: 9px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--soft);
+          }
 
-    /* ── Contact item (phone / email) ── */
-    .citem {
-      display: flex; align-items: center; gap: 10px;
-      flex-shrink: 0;
-    }
-    .cicon {
-      width: 36px; height: 36px;
-      border: 1.5px solid var(--blush); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 14px; color: var(--rose);
-    }
-    .clabel {
-      font-size: 9px; text-transform: uppercase;
-      letter-spacing: 0.1em; color: var(--soft); display: block;
-    }
-    .cval {
-      font-size: 13px; font-weight: 500; color: #222;
-      display: block; white-space: nowrap;
-    }
+        /* Vertical divider */
+        .divider {
+          width: 1px;
+          height: 44px;
+          background: #f0d5dc;
+          margin: 0 24px;
+          flex-shrink: 0;
+        }
 
-    /* ── Left group wrapper ── */
-    .ht-left {
-      display: flex;
-      align-items: center;
-      flex-shrink: 0;
-    }
+        /* Contact item */
+        .contact {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          flex-shrink: 0;
+        }
+          .contact-icon {
+            width: 36px;
+            height: 36px;
+            border: 1.5px solid var(--blush);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--rose);
+          }
+          .contact-info span {
+            display: block;
+          }
+          .contact-info .label {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--soft);
+          }
+          .contact-info .value {
+            font-size: 13px;
+            font-weight: 500;
+            color: #222;
+            white-space: nowrap;
+          }
 
-    /* ── Right group: badges ── */
-    .ht-right {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-shrink: 0;
-    }
+      /* RIGHT side of header — badges */
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-shrink: 0;
+      }
 
-    /* Badge 1 – branded text */
-    .bdg1 {
-      padding: 6px 14px;
-      border: 1.5px solid var(--blush);
-      border-radius: 6px;
-      background: var(--peach);
-      text-align: center;
-    }
-    .b1a {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 16px; font-style: italic; font-weight: 600;
-      color: var(--rose); display: block; line-height: 1.2;
-    }
-    .b1b {
-      font-size: 8px; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--soft); display: block;
-    }
+        /* Badge 1 – branded text */
+        .badge-text {
+          padding: 6px 14px;
+          border: 1.5px solid var(--blush);
+          border-radius: 6px;
+          background: var(--peach);
+          text-align: center;
+        }
+          .badge-text .big {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            font-style: italic;
+            font-weight: 600;
+            color: var(--rose);
+            display: block;
+            line-height: 1.2;
+          }
+          .badge-text .small {
+            font-size: 8px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--soft);
+            display: block;
+          }
 
-    /* Badge 2 – No.1 */
-    .bdg2 {
-      padding: 5px 12px;
-      border: 2px solid var(--rose);
-      border-radius: 6px;
-      background: var(--white);
-      text-align: center;
-      min-width: 78px;
-    }
-    .b2top { font-size: 8px; color: var(--soft); text-transform: uppercase; letter-spacing: 0.08em; display: block; }
-    .b2num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 30px; font-weight: 600; color: var(--rose); line-height: 1; display: block;
-    }
-    .b2bot { font-size: 7px; color: var(--mid); text-transform: uppercase; letter-spacing: 0.06em; line-height: 1.4; display: block; }
+        /* Badge 2 – No.1 */
+        .badge-rank {
+          padding: 5px 12px;
+          border: 2px solid var(--rose);
+          border-radius: 6px;
+          background: var(--white);
+          text-align: center;
+          min-width: 78px;
+        }
+          .badge-rank .top  { font-size: 8px;  color: var(--soft); text-transform: uppercase; letter-spacing: 0.08em; display: block; }
+          .badge-rank .num  { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 600; color: var(--rose); line-height: 1; display: block; }
+          .badge-rank .bot  { font-size: 7px;  color: var(--mid);  text-transform: uppercase; letter-spacing: 0.06em; line-height: 1.4; display: block; }
 
-    /* Badge 3 – animated gold jubilee circle */
-    .bdg3 {
-      width: 68px; height: 68px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 38% 38%, #fff6cc, #f5c430 55%, #c8960a);
-      border: 2.5px solid #daa520;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      position: relative;
-      flex-shrink: 0;
-      animation: goldPulse 1.8s ease-in-out infinite;
-    }
-    .b3n {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px; font-weight: 600; color: #5a3a00; line-height: 1;
-    }
-    .b3t {
-      font-size: 6.5px; font-weight: 700; color: #7a5200;
-      text-transform: uppercase; letter-spacing: 0.04em;
-      text-align: center; line-height: 1.4;
-    }
-    .bdg3::before {
-      content: '✦ ✦ ✦ ✦ ✦';
-      position: absolute;
-      top: -10px; left: -10px;
-      width: 86px; height: 86px;
-      border-radius: 50%;
-      font-size: 6px; letter-spacing: 5px; color: #daa520;
-      display: flex; align-items: center; justify-content: center;
-      animation: starSpin 6s linear infinite;
-    }
-    @keyframes goldPulse {
-      0%,100% { box-shadow: 0 0 8px rgba(200,150,10,0.5); }
-      50%      { box-shadow: 0 0 22px rgba(200,150,10,0.9), 0 0 38px rgba(245,200,66,0.4); }
-    }
-    @keyframes starSpin { to { transform: rotate(360deg); } }
+        /* Badge 3 – GIF (replaces gold jubilee) */
+        .badge-gif {
+          width: 68px;
+          height: 68px;
+          border-radius: 50%;
+          overflow: hidden;
+          border: 2.5px solid var(--teal);
+          flex-shrink: 0;
+          box-shadow: 0 0 10px rgba(58,154,154,0.4);
+          animation: tealPulse 2s ease-in-out infinite;
+        }
+          .badge-gif img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+
+        @keyframes tealPulse {
+          0%, 100% { box-shadow: 0 0 8px rgba(58,154,154,0.4); }
+          50%       { box-shadow: 0 0 22px rgba(58,154,154,0.8), 0 0 38px rgba(58,200,200,0.3); }
+        }
 
 
-    /* ══════════════════════════════════════════
+    /* ════════════════════════════
        NAVBAR
-    ══════════════════════════════════════════ */
+    ════════════════════════════ */
     .navbar {
       background: var(--white);
       border-top: 1px solid #f0d5dc;
       box-shadow: 0 2px 14px rgba(180,60,90,0.08);
-      position: sticky; top: 0; z-index: 999;
+      position: sticky;
+      top: 0;
+      z-index: 999;
     }
-    .nav-inner {
-      padding: 0 40px;
-      display: flex; align-items: center;
-      justify-content: space-between; height: 54px;
-    }
-    .nav-links { display: flex; align-items: center; gap: 30px; }
-    .nav-links a {
-      font-size: 13.5px; font-weight: 400; color: var(--mid);
-      position: relative; padding-bottom: 2px;
-      transition: color 0.25s; white-space: nowrap;
-    }
-    .nav-links a::after {
-      content: ''; position: absolute; bottom: 0; left: 0;
-      width: 0; height: 2px; background: var(--rose);
-      border-radius: 2px; transition: width 0.3s;
-    }
-    .nav-links a:hover, .nav-links a.active { color: var(--rose); }
-    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 
-    .nav-actions { display: flex; align-items: center; gap: 10px; }
-    .nav-actions .auth { font-size: 13px; color: var(--mid); cursor: pointer; transition: color 0.2s; }
-    .nav-actions .auth:hover { color: var(--rose); }
-    .nav-actions .slash { color: var(--blush); }
-    .nav-actions .cta-btn {
-      background: var(--rose); color: var(--white);
-      font-size: 11.5px; font-weight: 600;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 9px 20px; border-radius: 3px;
-      box-shadow: 0 3px 12px rgba(212,82,122,0.35);
-      transition: background 0.2s, transform 0.15s; cursor: pointer;
-    }
-    .nav-actions .cta-btn:hover { background: var(--deep); transform: translateY(-1px); }
+      .navbar-inner {
+        padding: 0 40px;
+        height: 54px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+        /* Nav links */
+        .nav-links {
+          display: flex;
+          align-items: center;
+          gap: 30px;
+        }
+          .nav-links a {
+            font-size: 13.5px;
+            font-weight: 400;
+            color: var(--mid);
+            position: relative;
+            padding-bottom: 2px;
+            transition: color 0.25s;
+            white-space: nowrap;
+          }
+          .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 0; height: 2px;
+            background: var(--rose);
+            border-radius: 2px;
+            transition: width 0.3s;
+          }
+          .nav-links a:hover,
+          .nav-links a.active        { color: var(--rose); }
+          .nav-links a:hover::after,
+          .nav-links a.active::after { width: 100%; }
+
+        /* Nav right: login / register / CTA */
+        .nav-actions {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+          .nav-actions .auth  { font-size: 13px; color: var(--mid); cursor: pointer; transition: color 0.2s; }
+          .nav-actions .auth:hover { color: var(--rose); }
+          .nav-actions .slash { color: var(--blush); }
+          .nav-actions .cta-btn {
+            background: var(--rose);
+            color: var(--white);
+            font-size: 11.5px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 9px 20px;
+            border-radius: 3px;
+            box-shadow: 0 3px 12px rgba(212,82,122,0.35);
+            transition: background 0.2s, transform 0.15s;
+            cursor: pointer;
+          }
+          .nav-actions .cta-btn:hover { background: var(--deep); transform: translateY(-1px); }
 
 
-    /* ══════════════════════════════════════════
+    /* ════════════════════════════
        HERO
-    ══════════════════════════════════════════ */
+    ════════════════════════════ */
     .hero {
-      position: relative; width: 100%; height: 540px;
-      overflow: hidden; /* only hero clips its own children */
-    }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background:
-        linear-gradient(to right,
-          rgba(10,2,5,0.60) 0%,
-          rgba(10,2,5,0.25) 50%,
-          rgba(0,0,0,0.05) 100%),
-        url('https://images.unsplash.com/photo-1488477181946-6428a0291777?w=1400&q=80')
-        center / cover no-repeat;
+      position: relative;
+      width: 100%;
+      height: 540px;
+      overflow: hidden;
     }
 
-    /* Pink blob — bursts out from top-left corner */
-    .hero-blob {
-      position: absolute;
-      top: -110px; left: -110px;
-      width: 300px; height: 300px;
-      background: rgba(210, 120, 150, 0.78);
-      border-radius: 50%;
-      z-index: 1;
-      transform-origin: center center;
-      animation:
-        blobBurst 1.1s cubic-bezier(0.22, 1.4, 0.36, 1) 0.15s both,
-        blobPulse  5s ease-in-out 1.4s infinite;
-    }
-    @keyframes blobBurst {
-      0%   { transform: scale(0); opacity: 0; }
-      70%  { transform: scale(1.1); opacity: 1; }
-      100% { transform: scale(1.0); opacity: 1; }
-    }
-    @keyframes blobPulse {
-      0%, 100% { transform: scale(1.0); }
-      50%       { transform: scale(1.06); }
-    }
+      /* Background image + dark overlay */
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(to right,
+            rgba(10,2,5,0.60) 0%,
+            rgba(10,2,5,0.25) 50%,
+            rgba(0,0,0,0.05) 100%),
+          url('https://images.unsplash.com/photo-1488477181946-6428a0291777?w=1400&q=80')
+          center / cover no-repeat;
+      }
 
-    /* Right circle */
-    .hero-circle {
-      position: absolute; top: 50%; right: -35px;
-      transform: translateY(-50%);
-      width: 120px; height: 120px; border-radius: 50%;
-      background: linear-gradient(145deg, rgba(212,82,122,0.90), rgba(232,112,90,0.90));
-      z-index: 2;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      animation: circleFloat 4s ease-in-out infinite;
-    }
-    .hero-circle span {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 13.5px; font-style: italic;
-      color: rgba(255,255,255,0.95);
-      text-align: center; line-height: 1.4; padding: 0 12px;
-    }
-    @keyframes circleFloat {
-      0%,100% { transform: translateY(-50%); }
-      50%      { transform: translateY(calc(-50% - 7px)); }
-    }
+      /* Pink blob — top-left corner */
+      .hero-blob {
+        position: absolute;
+        top: -110px;
+        left: -110px;
+        width: 300px;
+        height: 300px;
+        background: rgba(210,120,150,0.78);
+        border-radius: 50%;
+        z-index: 1;
+        transform-origin: center center;
+        animation:
+          blobBurst 1.1s cubic-bezier(0.22,1.4,0.36,1) 0.15s both,
+          blobPulse  5s ease-in-out 1.4s infinite;
+      }
+      @keyframes blobBurst {
+        0%   { transform: scale(0); opacity: 0; }
+        70%  { transform: scale(1.1); opacity: 1; }
+        100% { transform: scale(1.0); opacity: 1; }
+      }
+      @keyframes blobPulse {
+        0%, 100% { transform: scale(1.0); }
+        50%       { transform: scale(1.06); }
+      }
 
-    /* Hero text */
-    .hero-content {
-      position: absolute; bottom: 56px; left: 50px;
-      z-index: 3; max-width: 580px;
-    }
-    .eyebrow {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 26px; font-style: italic; color: var(--blush);
-      display: block; margin-bottom: 4px;
-      opacity: 0; animation: fadeUp 0.6s 0.3s ease forwards;
-    }
-    .hero-h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(44px, 5.5vw, 68px); font-weight: 600;
-      color: var(--white); line-height: 1.05; margin-bottom: 14px;
-      opacity: 0; animation: fadeUp 0.6s 0.55s ease forwards;
-    }
-    .hero-p {
-      font-size: 14.5px; font-weight: 300;
-      color: rgba(255,255,255,0.82); line-height: 1.85; margin-bottom: 24px;
-      opacity: 0; animation: fadeUp 0.6s 0.8s ease forwards;
-    }
-    .hero-btn {
-      display: inline-block; background: var(--rose); color: var(--white);
-      font-size: 13px; font-weight: 500; letter-spacing: 0.07em;
-      padding: 11px 28px; border-radius: 3px; cursor: pointer;
-      box-shadow: 0 4px 16px rgba(212,82,122,0.4);
-      transition: background 0.2s, transform 0.15s;
-      opacity: 0; animation: fadeUp 0.6s 1s ease forwards;
-    }
-    .hero-btn:hover { background: var(--deep); transform: translateY(-2px); }
+      /* "Handcrafted with Love" circle — moved left so it's fully visible */
+      .hero-circle {
+        position: absolute;
+        top: 50%;
+        right: 80px;             /* was -35px (cut off); now fully visible */
+        transform: translateY(-50%);
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: linear-gradient(145deg, rgba(212,82,122,0.90), rgba(232,112,90,0.90));
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        animation: circleFloat 4s ease-in-out infinite;
+      }
+        .hero-circle span {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 13.5px;
+          font-style: italic;
+          color: rgba(255,255,255,0.95);
+          text-align: center;
+          line-height: 1.4;
+          padding: 0 12px;
+        }
+      @keyframes circleFloat {
+        0%, 100% { transform: translateY(-50%); }
+        50%       { transform: translateY(calc(-50% - 7px)); }
+      }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+      /* Hero text block */
+      .hero-content {
+        position: absolute;
+        bottom: 56px;
+        left: 50px;
+        z-index: 3;
+        max-width: 580px;
+      }
+        .hero-content .eyebrow {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 26px;
+          font-style: italic;
+          color: var(--blush);
+          display: block;
+          margin-bottom: 4px;
+          opacity: 0;
+          animation: fadeUp 0.6s 0.3s ease forwards;
+        }
+        .hero-content h1 {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: clamp(44px, 5.5vw, 68px);
+          font-weight: 600;
+          color: var(--white);
+          line-height: 1.05;
+          margin-bottom: 14px;
+          opacity: 0;
+          animation: fadeUp 0.6s 0.55s ease forwards;
+        }
+        .hero-content p {
+          font-size: 14.5px;
+          font-weight: 300;
+          color: rgba(255,255,255,0.82);
+          line-height: 1.85;
+          margin-bottom: 24px;
+          opacity: 0;
+          animation: fadeUp 0.6s 0.8s ease forwards;
+        }
+        .hero-content .hero-btn {
+          display: inline-block;
+          background: var(--rose);
+          color: var(--white);
+          font-size: 13px;
+          font-weight: 500;
+          letter-spacing: 0.07em;
+          padding: 11px 28px;
+          border-radius: 3px;
+          cursor: pointer;
+          box-shadow: 0 4px 16px rgba(212,82,122,0.4);
+          transition: background 0.2s, transform 0.15s;
+          opacity: 0;
+          animation: fadeUp 0.6s 1s ease forwards;
+        }
+        .hero-content .hero-btn:hover { background: var(--deep); transform: translateY(-2px); }
+
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(18px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
 
   </style>
 </head>
 <body>
 
-<!-- ══ HEADER ══ -->
-<div class="header-top">
 
-  <div class="ht-left">
+<!-- ══════════ HEADER ══════════ -->
+<div class="header">
 
-    <!-- Logo -->
-    <div class="logo-box">
-      <img class="logo-img" src="logo.png" alt="Rose Berry Haze"
-           onerror="this.style.opacity='0'" />
-      <div>
-        <span class="logo-name">Rose Berry Haze</span>
-        <span class="logo-sub">Artisan Desserts</span>
+  <!-- LEFT: logo + contact -->
+  <div class="header-left">
+
+    <div class="logo">
+      <img src="logo.png" alt="Rose Berry Haze" onerror="this.style.opacity='0'" />
+      <div class="logo-text">
+        <span class="name">Rose Berry Haze</span>
+        <span class="sub">Artisan Desserts</span>
       </div>
     </div>
 
-    <div class="vline"></div>
+    <div class="divider"></div>
 
-    <!-- Phone -->
-    <div class="citem">
-      <div class="cicon">📞</div>
-      <div>
-        <span class="clabel">Call</span>
-        <span class="cval">+92 300 0000000</span>
+    <div class="contact">
+      <div class="contact-icon">📞</div>
+      <div class="contact-info">
+        <span class="label">Call</span>
+        <span class="value">+92 300 0000000</span>
       </div>
     </div>
 
-    <div class="vline"></div>
+    <div class="divider"></div>
 
-    <!-- Email -->
-    <div class="citem">
-      <div class="cicon">✉️</div>
-      <div>
-        <span class="clabel">Email</span>
-        <span class="cval">hello@roseberryhaze.com</span>
+    <div class="contact">
+      <div class="contact-icon">✉️</div>
+      <div class="contact-info">
+        <span class="label">Email</span>
+        <span class="value">hello@roseberryhaze.com</span>
       </div>
     </div>
 
-  </div>
+  </div><!-- /header-left -->
 
-  <!-- Badges -->
-  <div class="ht-right">
+  <!-- RIGHT: badges -->
+  <div class="header-right">
 
-    <div class="bdg1">
-      <span class="b1a">Rose Berry</span>
-      <span class="b1b">Certified Desserts</span>
+    <div class="badge-text">
+      <span class="big">Rose Berry</span>
+      <span class="small">Certified Desserts</span>
     </div>
 
-    <div class="bdg2">
-      <span class="b2top">No.</span>
-      <span class="b2num">1</span>
-      <span class="b2bot">Dessert<br>Boutique<br>of Lahore</span>
+    <div class="badge-rank">
+      <span class="top">No.</span>
+      <span class="num">1</span>
+      <span class="bot">Dessert<br>Boutique<br>of Lahore</span>
     </div>
 
-    <div class="bdg3">
-      <span class="b3n">25</span>
-      <span class="b3t">Years<br>Silver<br>Jubilee</span>
+    <!-- GIF replaces old gold jubilee badge -->
+    <div class="badge-gif">
+      <img src="gif.gif" alt="10 Years" />
     </div>
 
-  </div>
+  </div><!-- /header-right -->
 
-</div>
+</div><!-- /header -->
 
 
-<!-- ══ NAVBAR ══ -->
+<!-- ══════════ NAVBAR ══════════ -->
 <nav class="navbar">
-  <div class="nav-inner">
+  <div class="navbar-inner">
+
     <div class="nav-links">
       <a href="#" class="active">Home</a>
       <a href="#">About</a>
@@ -402,33 +480,41 @@
       <a href="#">Order</a>
       <a href="#">Blogs</a>
     </div>
+
     <div class="nav-actions">
       <span class="auth">Login</span>
       <span class="slash">/</span>
       <span class="auth">Register</span>
       <a class="cta-btn" href="#">Order Now</a>
     </div>
+
   </div>
-</nav>
+</nav><!-- /navbar -->
 
 
-<!-- ══ HERO ══ -->
+<!-- ══════════ HERO ══════════ -->
 <section class="hero">
+
   <div class="hero-bg"></div>
   <div class="hero-blob"></div>
+
   <div class="hero-circle">
     <span>Handcrafted<br>with Love<br>🌹</span>
   </div>
+
   <div class="hero-content">
     <span class="eyebrow">Craving something sweet?</span>
-    <h1 class="hero-h1">We're Crafting<br>Pure Bliss</h1>
-    <p class="hero-p">
+    <h1>We're Crafting<br>Pure Bliss</h1>
+    <p>
       Every creation is a love letter to flavour.<br>
       Rose-kissed pastries, berry glazed tarts &amp;<br>
       handcrafted confections made fresh, every day.
     </p>
     <a class="hero-btn" href="#">Explore Our Menu</a>
   </div>
-</section>
+
+</section><!-- /hero -->
+
+
 </body>
 </html>
