@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="header-parent">
+        <div class="header-child">
+            <div class="logo-box">
+                <img src="5c44e417-4ff4-48de-b676-d8561c18462c_removalai_preview.png" alt="Logo">
+                <div class="brand-name">
+                    <span>ROSE BERRY</span>
+                    <span>HAZE</span>
+                </div>
+            </div>
+            <div class="contact-box">
+                <span>Call: +92 300 1234567</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-parent">
+        <div class="nav-child">
+            <div class="links">
+                <a href="#">Home</a>
+                <a href="#">Menu</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="cta-box">
+                <a href="#" class="order-btn">ORDER NOW</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="banner-parent">
+        <div class="banner-content">
+            <h1 class="fade-in-text">Indulge in Floral Sweetness</h1>
+            <p>Hand-crafted desserts infused with organic rose and wild berry essence.</p>
+            <a href="#" class="hero-btn">Explore Menu</a>
+        </div>
+    </div>
+
+</body>
+</html>
+/* Palette: Rose, Peach, Blush */
+:root {
+    --rose: #d81b60;
+    --blush: #fce4ec;
+    --peach: #ffccbc;
+    --white: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Header Flex Parent */
+.header-parent {
+    display: flex;
+    justify-content: center;
+    background: var(--blush);
+    padding: 15px 0;
+}
+.header-child {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    align-items: center;
+}
+.logo-box { display: flex; align-items: center; gap: 10px; }
+.logo-box img { height: 60px; }
+.brand-name { display: flex; flex-direction: column; color: var(--rose); font-weight: bold; }
+
+/* Nav Flex Parent */
+.nav-parent { display: flex; justify-content: center; background: var(--white); padding: 15px 0; }
+.nav-child { display: flex; justify-content: space-between; width: 80%; align-items: center; }
+.links { display: flex; gap: 30px; }
+.links a { text-decoration: none; color: #555; font-weight: 600; }
+.order-btn { background: var(--rose); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; }
+
+/* Banner Section with Animation */
+.banner-parent {
+    height: 500px;
+    background: linear-gradient(rgba(255, 204, 188, 0.5), rgba(216, 27, 96, 0.3)), 
+                url('https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=2000');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.banner-content {
+    animation: fadeIn 2s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 30px;
+    background: var(--white);
+    color: var(--rose);
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 30px;
+}
