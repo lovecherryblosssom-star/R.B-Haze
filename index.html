@@ -52,15 +52,24 @@
           align-items: center;
           gap: 14px;
         }
-          .logo img {
-            width: 90px;
-            height: 90px;
+          /* wrapper circle — flex centers the img inside it */
+          .logo-img-wrap {
+            width: 90px; height: 90px;
             border-radius: 50%;
-            object-fit: contain;   
-            background: var(--peach);
-            padding: 4px;           
             border: 2px solid var(--blush);
-        }
+            background: var(--peach);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0;
+          }
+          .logo-img-wrap img {
+            width: 82px; height: 82px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+          }
           .logo-text .name {
             display: block;
             font-family: 'Cormorant Garamond', serif;
@@ -88,10 +97,19 @@
         }
           .contact-icon {
             width: 40px; height: 40px;
-            border: 1.5px solid var(--blush);
+            border: 1.5px solid var(--teal);
             border-radius: 50%;
+            background: var(--teal-pale);
             display: flex; align-items: center; justify-content: center;
-            font-size: 15px;
+            flex-shrink: 0;
+          }
+          .contact-icon svg {
+            width: 17px; height: 17px;
+            fill: none;
+            stroke: var(--teal);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
           }
           /* teal for the small CALL / EMAIL label */
           .contact-info .label {
@@ -334,7 +352,9 @@
 
     <div class="logo">
       <!-- Save your logo as "logo.png" in the same folder as this file -->
-      <img src="logo.png" alt="Rose Berry Haze" onerror="this.style.display='none'" />
+      <div class="logo-img-wrap">
+        <img src="logo.png" alt="Rose Berry Haze" onerror="this.style.display='none'" />
+      </div>
       <div class="logo-text">
         <span class="name">Rose Berry Haze</span>
         <span class="sub">Artisan Desserts</span>
@@ -344,7 +364,12 @@
     <div class="divider"></div>
 
     <div class="contact">
-      <div class="contact-icon">📞</div>
+      <div class="contact-icon">
+        <!-- phone icon -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.1 2.18 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+        </svg>
+      </div>
       <div class="contact-info">
         <span class="label">Call</span>
         <span class="value">+92 300 0000000</span>
@@ -354,7 +379,13 @@
     <div class="divider"></div>
 
     <div class="contact">
-      <div class="contact-icon">✉️</div>
+      <div class="contact-icon">
+        <!-- email icon -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <polyline points="2,4 12,13 22,4"/>
+        </svg>
+      </div>
       <div class="contact-info">
         <span class="label">Email</span>
         <span class="value">hello@roseberryhaze.com</span>
