@@ -398,6 +398,7 @@
               width: 80px;
               height: 80px;
               object-fit: contain;
+              mix-blend-mode: multiply;  /* makes white pixels in the PNG transparent */
             }
 
             /* Fallback initials — visible by default, hidden by JS on successful load */
@@ -560,7 +561,7 @@
 
         /* ── Teal accent bar ──
            Sits on the LEFT edge of the right column, peeks out toward the text.
-           Rounded corners face LEFT (away from the image) → border-radius: 3px 0 0 3px
+           Rounded corners face LEFT (away from the image) → border-radius: 10px 0 0 10px
            margin-top pushes it down so it doesn't start at the very top.
            height: 50% so it ends around mid-image.
         ── */
@@ -571,7 +572,7 @@
           align-self: flex-start;
           margin-top: 40px;
           height: 50%;
-          border-radius: 3px 0 0 3px;   /* ← rounded LEFT side, flush RIGHT against image */
+          border-radius: 10px 0 0 10px;  /* ← rounded LEFT side, flush RIGHT against image */
         }
 
         /* Image column fills remaining width */
