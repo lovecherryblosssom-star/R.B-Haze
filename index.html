@@ -53,13 +53,14 @@
           gap: 14px;
         }
           .logo img {
-            width: 90px; height: 90px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
-            object-fit: cover;
+            object-fit: contain;   /* No cropping, just scales to fit */
             background: var(--peach);
-            padding: 4px;
+            padding: 0;            /* Remove padding so the image can use the full circle */
             border: 2px solid var(--blush);
-          }
+        }
           .logo-text .name {
             display: block;
             font-family: 'Cormorant Garamond', serif;
