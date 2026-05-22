@@ -363,6 +363,7 @@
         gap: 30px;
       }
 
+        /* ── Each affiliation card ── */
         .aff-card {
           background: var(--white);
           border-radius: 12px;
@@ -377,77 +378,47 @@
           border: 1px solid #f0d5dc;
         }
 
-          /* ── Affiliation logo circles ──
-             When a real logo image IS present  → image fills the circle, fallback hidden
-             When the image file is MISSING     → coloured circle + text abbreviation shown
+          /* ── Logo wrapper ──
+             Default state: coloured circle with fallback initials (no image file present).
+             When JS confirms a logo loaded: circle styling is stripped, only the image shows.
           ── */
           .aff-logo {
-            width: 80px; height: 80px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            overflow: hidden;
-          }
-          /* Real logo image — when present, fills the circle area cleanly.
-             The coloured circle (border + background) shows ONLY as a fallback
-             when the image file is missing. Once a real logo loads, it sits
-             naturally inside the card without a coloured ring around it. */
-          .aff-logo img {
-            position: absolute; inset: -2px; /* covers the border too */
-            width: calc(100% + 4px);
-            height: calc(100% + 4px);
-            object-fit: contain;
-            padding: 10px;
-            border-radius: 50%;
-            background: var(--white);   /* white bg hides the circle colour */
-            display: block;
-            z-index: 2;
-          }
-          /* Fallback abbreviation — sits behind the image; image covers it when loaded */
-          .aff-logo-fallback {
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            text-align: center;
-            line-height: 1.2;
-            pointer-events: none;
           }
 
-          /* Individual colour themes */
-          .aff-logo.pfa {
-            background: #e8f5e8;
-            border: 2px solid #a5d6a7;
-            color: #2e7d32;
-          }
-          .aff-logo.pfa .aff-logo-fallback { font-size: 15px; }
+            /* The real logo image — hidden by default, shown by JS on successful load */
+            .aff-logo img {
+              display: none;         /* JS sets to block on load */
+              width: 80px;
+              height: 80px;
+              object-fit: contain;
+            }
 
-          .aff-logo.psqca {
-            background: #e3f2fd;
-            border: 2px solid #90caf9;
-            color: #1565c0;
-          }
+            /* Fallback initials — visible by default, hidden by JS on successful load */
+            .aff-logo-fallback {
+              font-weight: 700;
+              letter-spacing: 0.04em;
+              text-align: center;
+              line-height: 1.2;
+              pointer-events: none;
+            }
+
+          /* Colour themes for each fallback circle */
+          .aff-logo.pfa    { background: #e8f5e8; border: 2px solid #a5d6a7; color: #2e7d32; }
+          .aff-logo.psqca  { background: #e3f2fd; border: 2px solid #90caf9; color: #1565c0; }
+          .aff-logo.lcc    { background: var(--peach); border: 2px solid var(--blush); color: var(--deep); }
+          .aff-logo.halal  { background: var(--teal-pale); border: 2px solid var(--teal); color: var(--teal); }
+
+          .aff-logo.pfa   .aff-logo-fallback { font-size: 15px; }
           .aff-logo.psqca .aff-logo-fallback { font-size: 11px; }
-
-          .aff-logo.lcc {
-            background: var(--peach);
-            border: 2px solid var(--blush);
-            color: var(--deep);
-          }
-          .aff-logo.lcc .aff-logo-fallback { font-size: 12px; }
-
-          .aff-logo.halal {
-            background: var(--teal-pale);
-            border: 2px solid var(--teal);
-            color: var(--teal);
-          }
+          .aff-logo.lcc   .aff-logo-fallback { font-size: 12px; }
           .aff-logo.halal .aff-logo-fallback { font-size: 26px; }
-
-          /* HOW TO REPLACE WITH YOUR REAL LOGO:
-             1. Save e.g. "logo-pfa.png" in the same folder as this HTML file.
-             2. The <img> inside each .aff-logo already points to that filename.
-             3. Once the file exists the coloured fallback disappears automatically.
-          */
 
           .aff-name {
             font-size: 13px;
@@ -466,10 +437,9 @@
       padding: 80px;
       display: flex;
       align-items: stretch;
-      gap: 0;                /* gap handled by right column's internal offset */
     }
 
-      /* LEFT: text side */
+      /* LEFT: text column */
       .intro-left {
         flex: 1;
         min-width: 0;
@@ -506,7 +476,6 @@
           margin-bottom: 16px;
         }
 
-        /* ── Milestone text block — plain text styled, not a card ── */
         .milestone-inline {
           margin: 22px 0 26px;
           padding: 20px 0 20px 20px;
@@ -581,64 +550,43 @@
           box-shadow: 0 4px 20px rgba(58,154,154,0.4);
         }
 
-      /* ══ RIGHT: teal accent bar + image placeholder stacked ══
-         Mirrors the Brains College layout:
-         a thin coloured bar peeks out on the left,
-         the big image block sits to its right.
-      ══════════════════════════════════════════════════════════ */
+      /* RIGHT: teal accent bar + image column, side by side */
       .intro-right {
         flex-shrink: 0;
         width: 480px;
-        display: flex;
+        display: flex;           /* bar and image sit side by side */
         align-items: stretch;
-        position: relative;
       }
 
-        /* teal accent bar — starts a bit below top, ends around mid-image
-           matches the blue bar position in the Brains College reference */
+        /* ── Teal accent bar ──
+           Sits on the LEFT edge of the right column, peeks out toward the text.
+           Rounded corners face LEFT (away from the image) → border-radius: 3px 0 0 3px
+           margin-top pushes it down so it doesn't start at the very top.
+           height: 50% so it ends around mid-image.
+        ── */
         .intro-accent-bar {
           width: 16px;
           flex-shrink: 0;
           background: var(--teal);
-          align-self: flex-start;   /* anchors to top so we can control height */
-          margin-top: 40px;         /* pushes it down from the very top */
-          height: 50%;              /* ends around the middle of the image */
-          border-radius: 0 3px 3px 0;
+          align-self: flex-start;
+          margin-top: 40px;
+          height: 50%;
+          border-radius: 3px 0 0 3px;   /* ← rounded LEFT side, flush RIGHT against image */
         }
 
-        /* image placeholder column */
+        /* Image column fills remaining width */
         .intro-img-col {
           flex: 1;
           display: flex;
           flex-direction: column;
         }
 
-          /*
-          ╔══════════════════════════════════════════════╗
-          ║  PINK PLACEHOLDER — this is what you replace ║
-          ║  with your real photo.                       ║
-          ║                                              ║
-          ║  HOW TO ADD YOUR IMAGE:                      ║
-          ║  1. Save it as "intro-image.jpg" in the same ║
-          ║     folder as this HTML file.                ║
-          ║  2. Change the background of .intro-img-box  ║
-          ║     to:  background: none;                   ║
-          ║  3. Uncomment the <img> tag in the HTML.     ║
-          ╚══════════════════════════════════════════════╝
-          */
           .intro-img-box {
             flex: 1;
             min-height: 420px;
             position: relative;
             overflow: hidden;
-          }
-            /* STEP 1 — Right now this is a solid pink placeholder.
-               STEP 2 — When you have your photo ready:
-                  • Save it as  intro-image.jpg  in the same folder as index.html
-                  • Delete the line:   background: #d4527a;
-               That's it. The image tag below already points to the file. */
-          .intro-img-box {
-            background: #d4527a; /* ← DELETE THIS LINE when you add your photo */
+            background: #d4527a;   /* ← pink placeholder; delete this line when adding your photo */
           }
           .intro-img-box img {
             position: absolute; inset: 0;
@@ -778,29 +726,9 @@
 
   <div class="affiliated-cards">
 
-    <!--
-    ┌─────────────────────────────────────────────────────────┐
-    │  HOW TO ADD YOUR AFFILIATION LOGOS                      │
-    │                                                         │
-    │  Each card has an <img> and a fallback <span>.          │
-    │  The coloured circle + text shows NOW as a placeholder. │
-    │                                                         │
-    │  To swap in your real logo:                             │
-    │  1. Save the logo image in the SAME folder as this HTML │
-    │     file using the exact filenames below:               │
-    │     • Punjab Food Authority  →  logo-pfa.png            │
-    │     • Quality Standards      →  logo-psqca.png          │
-    │     • Lahore Chamber         →  logo-lcc.png            │
-    │     • Halal Certified        →  logo-halal.png          │
-    │                                                         │
-    │  2. The browser will load the image automatically.      │
-    │     The fallback text disappears once the image loads.  │
-    └─────────────────────────────────────────────────────────┘
-    -->
-
     <div class="aff-card">
       <div class="aff-logo pfa">
-        <img src="logo-pfa.png" alt="PFA" onerror="this.style.display='none'" />
+        <img src="logo-pfa.png" alt="Punjab Food Authority" />
         <span class="aff-logo-fallback">PFA</span>
       </div>
       <span class="aff-name">Punjab Food Authority</span>
@@ -808,7 +736,7 @@
 
     <div class="aff-card">
       <div class="aff-logo psqca">
-        <img src="logo-psqca.png" alt="PSQCA" onerror="this.style.display='none'" />
+        <img src="logo-psqca.png" alt="PSQCA" />
         <span class="aff-logo-fallback">PSQCA</span>
       </div>
       <span class="aff-name">Quality Standards</span>
@@ -816,7 +744,7 @@
 
     <div class="aff-card">
       <div class="aff-logo lcc">
-        <img src="logo-lcc.png" alt="LCC" onerror="this.style.display='none'" />
+        <img src="logo-lcc.png" alt="Lahore Chamber of Commerce" />
         <span class="aff-logo-fallback">LCC</span>
       </div>
       <span class="aff-name">Lahore Chamber of Commerce</span>
@@ -824,7 +752,7 @@
 
     <div class="aff-card">
       <div class="aff-logo halal">
-        <img src="logo-halal.png" alt="Halal" onerror="this.style.display='none'" />
+        <img src="logo-halal.png" alt="Halal Certified" />
         <span class="aff-logo-fallback">🌙</span>
       </div>
       <span class="aff-name">Halal Certified</span>
@@ -857,7 +785,6 @@
       families and counted among the city's most loved sweet boutiques.
     </p>
 
-    <!-- ── Milestone text — inline, styled with a teal left border ── -->
     <div class="milestone-inline">
       <div class="ms-eyebrow">✦ Handcrafted Since 2016 ✦</div>
       <div class="ms-big">10</div>
@@ -871,21 +798,20 @@
     <a class="intro-btn" href="#">Explore Our Menu</a>
   </div>
 
-  <!-- RIGHT: teal accent bar + solid pink image placeholder -->
+  <!-- RIGHT: teal accent bar + image, side by side inside .intro-right -->
   <div class="intro-right">
 
-    <!-- thin teal strip peeks out from the left, like the blue bar in the reference -->
+    <!-- bar: rounded corners face LEFT (away from image) -->
     <div class="intro-accent-bar"></div>
 
-    <!-- image column: big solid pink block you replace with your real photo -->
+    <!-- image column -->
     <div class="intro-img-col">
       <div class="intro-img-box">
         <!--
           HOW TO ADD YOUR PHOTO:
-          1. Save your photo as  intro-image.jpg  in the SAME folder as this index.html file.
-          2. In the CSS find the line:   background: #d4527a;   (under .intro-img-box)
-             and DELETE that one line. The pink block disappears and your photo shows.
-          Nothing else needs changing — the <img> tag below already works.
+          1. Save your photo as  intro-image.jpg  in the same folder as this file.
+          2. Delete the line:  background: #d4527a;  from .intro-img-box in the CSS.
+          The <img> below already points to the file — nothing else to change.
         -->
         <img src="intro-image.jpg" alt="Rose Berry Haze Desserts"
              onerror="this.style.display='none'" />
@@ -896,6 +822,43 @@
 
 </section>
 
+
+<script>
+  /*
+   * Affiliation logos
+   * -----------------
+   * Default:        circle (coloured bg + border) + fallback initials visible
+   * On logo load:   circle styling stripped → only the bare image remains
+   * On logo error:  image hidden → circle + fallback initials stay visible
+   */
+  document.querySelectorAll('.aff-logo img').forEach(function (img) {
+
+    function onLoaded() {
+      var wrap = img.parentElement;                          /* .aff-logo */
+      /* Strip circle styles so nothing frames the image */
+      wrap.style.background    = 'transparent';
+      wrap.style.border        = 'none';
+      wrap.style.borderRadius  = '0';
+      /* Hide fallback initials */
+      var fallback = wrap.querySelector('.aff-logo-fallback');
+      if (fallback) fallback.style.display = 'none';
+      /* Show the image */
+      img.style.display = 'block';
+    }
+
+    function onFailed() {
+      img.style.display = 'none';   /* circle + fallback initials remain */
+    }
+
+    /* Already cached and loaded */
+    if (img.complete) {
+      if (img.naturalWidth > 0) { onLoaded(); } else { onFailed(); }
+    } else {
+      img.addEventListener('load',  onLoaded);
+      img.addEventListener('error', onFailed);
+    }
+  });
+</script>
 
 </body>
 </html>
