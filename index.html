@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rose Berry Haze – Artisan Desserts</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
 
   <style>
 
@@ -398,7 +399,10 @@
               width: 80px;
               height: 80px;
               object-fit: contain;
-              mix-blend-mode: multiply;  /* makes white pixels in the PNG transparent */
+              mix-blend-mode: multiply;
+              /* brightness(1.1) pushes near-white greys to full white
+                 so multiply can then erase them — fixes grey box on Halal logo */
+              filter: brightness(1.1) contrast(1.05);
             }
 
             /* Fallback initials — visible by default, hidden by JS on successful load */
@@ -860,6 +864,404 @@
     }
   });
 </script>
+
+
+<!-- ════════ FEATURE HIGHLIGHTS ════════ -->
+<section class="features">
+
+  <div class="feature-card">
+    <div class="feature-icon">
+      <i class="fas fa-birthday-cake"></i>
+    </div>
+    <div class="feature-text">
+      <strong>Baked Fresh Daily</strong>
+      <span>with no preservatives</span>
+    </div>
+  </div>
+
+  <div class="feature-divider"></div>
+
+  <div class="feature-card">
+    <div class="feature-icon">
+      <i class="fas fa-utensils"></i>
+    </div>
+    <div class="feature-text">
+      <strong>Master Bakers</strong>
+      <span>trained &amp; passionate</span>
+    </div>
+  </div>
+
+  <div class="feature-divider"></div>
+
+  <div class="feature-card">
+    <div class="feature-icon">
+      <i class="fas fa-certificate"></i>
+    </div>
+    <div class="feature-text">
+      <strong>Halal Certified</strong>
+      <span>100% halal ingredients</span>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ════════ EXPLORE MENU ════════ -->
+<section class="explore">
+
+  <div class="explore-heading">
+    <span class="explore-eyebrow">Explore Our Menu</span>
+    <h2>Our Signature Creations</h2>
+    <div class="heading-line"></div>
+  </div>
+
+  <div class="explore-grid">
+
+    <!-- Card 1 -->
+    <div class="menu-card">
+      <div class="menu-card-img" style="background: linear-gradient(135deg, #f8c8d8 0%, #e8a0b8 100%);">
+        <span class="menu-card-emoji">🎂</span>
+      </div>
+      <div class="menu-card-body">
+        <h3>Celebration Cakes</h3>
+        <div class="menu-card-stars">★★★★★ <span>(24)</span></div>
+        <div class="menu-card-meta">
+          <span class="menu-card-tag">Custom Orders</span>
+          <span class="menu-card-price">From Rs. 2,500</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="menu-card">
+      <div class="menu-card-img" style="background: linear-gradient(135deg, #fde8ee 0%, #f2b8cc 100%);">
+        <span class="menu-card-emoji">🧁</span>
+      </div>
+      <div class="menu-card-body">
+        <h3>Cupcakes</h3>
+        <div class="menu-card-stars">★★★★★ <span>(31)</span></div>
+        <div class="menu-card-meta">
+          <span class="menu-card-tag">Box of 6 / 12</span>
+          <span class="menu-card-price">From Rs. 800</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="menu-card">
+      <div class="menu-card-img" style="background: linear-gradient(135deg, #e8f5f5 0%, #b8e0e0 100%);">
+        <span class="menu-card-emoji">🫐</span>
+      </div>
+      <div class="menu-card-body">
+        <h3>Macarons</h3>
+        <div class="menu-card-stars">★★★★★ <span>(18)</span></div>
+        <div class="menu-card-meta">
+          <span class="menu-card-tag">Box of 8 / 16</span>
+          <span class="menu-card-price">From Rs. 1,200</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="menu-card">
+      <div class="menu-card-img" style="background: linear-gradient(135deg, #fff3e0 0%, #ffcc80 100%);">
+        <span class="menu-card-emoji">🥧</span>
+      </div>
+      <div class="menu-card-body">
+        <h3>Artisan Tarts</h3>
+        <div class="menu-card-stars">★★★★★ <span>(15)</span></div>
+        <div class="menu-card-meta">
+          <span class="menu-card-tag">Individual / Whole</span>
+          <span class="menu-card-price">From Rs. 650</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="menu-card">
+      <div class="menu-card-img" style="background: linear-gradient(135deg, #efebe9 0%, #bcaaa4 100%);">
+        <span class="menu-card-emoji">🍫</span>
+      </div>
+      <div class="menu-card-body">
+        <h3>Brownies</h3>
+        <div class="menu-card-stars">★★★★★ <span>(42)</span></div>
+        <div class="menu-card-meta">
+          <span class="menu-card-tag">Box of 4 / 9</span>
+          <span class="menu-card-price">From Rs. 750</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 6 — FEATURED badge -->
+    <div class="menu-card featured">
+      <div class="menu-card-featured-badge">Featured</div>
+      <div class="menu-card-img" style="background: linear-gradient(135deg, #fce4ec 0%, #f48fb1 100%);">
+        <span class="menu-card-emoji">🍰</span>
+      </div>
+      <div class="menu-card-body">
+        <h3>Cheesecakes</h3>
+        <div class="menu-card-stars">★★★★★ <span>(29)</span></div>
+        <div class="menu-card-meta">
+          <span class="menu-card-tag">Whole / Slices</span>
+          <span class="menu-card-price">From Rs. 3,200</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 7 -->
+    <div class="menu-card">
+      <div class="menu-card-img" style="background: linear-gradient(135deg, #f3e5f5 0%, #ce93d8 100%);">
+        <span class="menu-card-emoji">🎁</span>
+      </div>
+      <div class="menu-card-body">
+        <h3>Gifting Boxes</h3>
+        <div class="menu-card-stars">★★★★★ <span>(37)</span></div>
+        <div class="menu-card-meta">
+          <span class="menu-card-tag">Custom Hampers</span>
+          <span class="menu-card-price">From Rs. 1,800</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 8 -->
+    <div class="menu-card">
+      <div class="menu-card-img" style="background: linear-gradient(135deg, #e8f5e9 0%, #a5d6a7 100%);">
+        <span class="menu-card-emoji">🌸</span>
+      </div>
+      <div class="menu-card-body">
+        <h3>Seasonal Specials</h3>
+        <div class="menu-card-stars">★★★★★ <span>(11)</span></div>
+        <div class="menu-card-meta">
+          <span class="menu-card-tag">Limited Edition</span>
+          <span class="menu-card-price">From Rs. 950</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 9 -->
+    <div class="menu-card">
+      <div class="menu-card-img" style="background: linear-gradient(135deg, #fbe9e7 0%, #ffab91 100%);">
+        <span class="menu-card-emoji">✨</span>
+      </div>
+      <div class="menu-card-body">
+        <h3>Custom Orders</h3>
+        <div class="menu-card-stars">★★★★★ <span>(56)</span></div>
+        <div class="menu-card-meta">
+          <span class="menu-card-tag">Fully Bespoke</span>
+          <span class="menu-card-price">Quote on Request</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<style>
+
+  /* ══════════════════════════════
+     FEATURE HIGHLIGHTS
+  ══════════════════════════════ */
+  .features {
+    background: var(--white);
+    padding: 40px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    border-top: 1px solid #f0d5dc;
+    border-bottom: 1px solid #f0d5dc;
+  }
+
+    .feature-card {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 28px 50px;
+      flex: 1;
+      max-width: 380px;
+    }
+
+    .feature-divider {
+      width: 1px;
+      height: 60px;
+      background: #f0d5dc;
+      flex-shrink: 0;
+    }
+
+    .feature-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 12px;
+      background: var(--teal-pale);
+      border: 1.5px solid var(--teal);
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+      .feature-icon i {
+        font-size: 26px;
+      }
+
+    .feature-text {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+      .feature-text strong {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--deep);
+      }
+      .feature-text span {
+        font-size: 12.5px;
+        font-weight: 300;
+        color: var(--soft);
+      }
+
+
+  /* ══════════════════════════════
+     EXPLORE MENU
+  ══════════════════════════════ */
+  .explore {
+    background: var(--cream);
+    padding: 70px 80px 80px;
+  }
+
+    .explore-heading {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+      .explore-eyebrow {
+        display: inline-block;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--teal);
+        letter-spacing: 0.06em;
+        margin-bottom: 10px;
+      }
+      .explore-heading h2 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 42px;
+        font-weight: 600;
+        color: var(--deep);
+        margin-bottom: 14px;
+      }
+
+    /* 3 columns, auto rows */
+    .explore-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+      /* ── Single menu card ── */
+      .menu-card {
+        background: var(--white);
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid #f0d5dc;
+        box-shadow: 0 2px 16px rgba(180,60,90,0.06);
+        position: relative;
+        transition: transform 0.25s, box-shadow 0.25s;
+        cursor: pointer;
+      }
+      .menu-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 28px rgba(180,60,90,0.13);
+      }
+
+        /* Image / colour block */
+        .menu-card-img {
+          width: 100%;
+          height: 200px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          overflow: hidden;
+        }
+          /* Real photo — add src to swap out the gradient placeholder */
+          .menu-card-img img {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
+          }
+          .menu-card-emoji {
+            font-size: 56px;
+            line-height: 1;
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.10));
+          }
+
+        /* Body */
+        .menu-card-body {
+          padding: 18px 20px 20px;
+        }
+          .menu-card-body h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--deep);
+            margin-bottom: 6px;
+          }
+          .menu-card-stars {
+            font-size: 13px;
+            color: #f4a623;
+            margin-bottom: 14px;
+          }
+          .menu-card-stars span {
+            color: var(--soft);
+            font-size: 12px;
+          }
+
+          /* Divider line */
+          .menu-card-meta {
+            border-top: 1px solid #f5e0e6;
+            padding-top: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+            .menu-card-tag {
+              font-size: 11.5px;
+              color: var(--teal);
+              font-weight: 500;
+            }
+            .menu-card-price {
+              font-size: 12px;
+              font-weight: 600;
+              color: var(--rose);
+            }
+
+      /* Featured badge */
+      .menu-card-featured-badge {
+        position: absolute;
+        top: 14px; left: 14px;
+        background: var(--teal);
+        color: var(--white);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 4px 10px;
+        border-radius: 3px;
+        z-index: 2;
+      }
+
+      /* Featured card gets a teal top border accent */
+      .menu-card.featured {
+        border-top: 3px solid var(--teal);
+      }
+
+</style>
 
 </body>
 </html>
