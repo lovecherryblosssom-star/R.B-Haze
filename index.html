@@ -834,26 +834,14 @@
    * On logo load:   circle styling stripped → only the bare image remains
    * On logo error:  image hidden → circle + fallback initials stay visible
    */
-  /* Hide emoji when a real card image loads successfully */
+  /* Hide the emoji placeholder when a real card image loads */
   document.querySelectorAll('.menu-card-img img').forEach(function (img) {
-
     function hideEmoji() {
       var emoji = img.parentElement.querySelector('.menu-card-emoji');
-      if (emoji) { emoji.style.display = 'none'; }
+      if (emoji) emoji.style.display = 'none';
     }
-
-    function onError() {
-      img.style.display = 'none'; /* image broken — keep emoji visible */
-    }
-
-    /* Image already loaded from cache before script ran */
-    if (img.complete) {
-      if (img.naturalWidth > 0) { hideEmoji(); }
-      else { onError(); }
-    } else {
-      img.addEventListener('load',  hideEmoji);
-      img.addEventListener('error', onError);
-    }
+    if (img.complete && img.naturalWidth > 0) { hideEmoji(); }
+    else { img.addEventListener('load', hideEmoji); }
   });
 
   document.querySelectorAll('.aff-logo img').forEach(function (img) {
@@ -950,7 +938,7 @@
     <!-- Card 1 — Celebration Cakes -->
     <div class="menu-card">
       <div class="menu-card-img" style="background: linear-gradient(135deg, #f8c8d8 0%, #e8a0b8 100%);">
-        <img src="card1.jpg" alt="Celebration Cakes" onerror="this.style.display='none'" />
+        <img src="cakes.jpg" alt="Celebration Cakes" onerror="this.style.display='none'" />
         <span class="menu-card-emoji">🎂</span>
         <div class="menu-card-img-title">Celebration Cakes</div>
       </div>
@@ -964,15 +952,15 @@
       </div>
     </div>
 
-    <!-- Card 2 — Cupcakes -->
+    <!-- Card 2 — Tiramisu -->
     <div class="menu-card">
       <div class="menu-card-img" style="background: linear-gradient(135deg, #fde8ee 0%, #f2b8cc 100%);">
-        <img src="card2.jpg" alt="Cupcakes" onerror="this.style.display='none'" />
-        <span class="menu-card-emoji">🧁</span>
-        <div class="menu-card-img-title">Cupcakes</div>
+        <img src="tiramisu.jpg" alt="Tiramisu" onerror="this.style.display='none'" />
+        <span class="menu-card-emoji">🍰☕🍫</span>
+        <div class="menu-card-img-title">Tiramisu</div>
       </div>
       <div class="menu-card-body">
-        <h3>Cupcakes</h3>
+        <h3>Tiramisu</h3>
         <div class="menu-card-stars">★★★★★ <span>(31)</span></div>
         <div class="menu-card-meta">
           <span class="menu-card-tag">Box of 6 / 12</span>
@@ -984,8 +972,8 @@
     <!-- Card 3 — Macarons -->
     <div class="menu-card">
       <div class="menu-card-img" style="background: linear-gradient(135deg, #e8f5f5 0%, #b8e0e0 100%);">
-        <img src="card3.jpg" alt="Macarons" onerror="this.style.display='none'" />
-        <span class="menu-card-emoji">🫐</span>
+        <img src="macarons.jpg" alt="Macarons" onerror="this.style.display='none'" />
+        <span class="menu-card-emoji">🍪</span>
         <div class="menu-card-img-title">Macarons</div>
       </div>
       <div class="menu-card-body">
@@ -1001,7 +989,7 @@
     <!-- Card 4 — Artisan Tarts -->
     <div class="menu-card">
       <div class="menu-card-img" style="background: linear-gradient(135deg, #fff3e0 0%, #ffcc80 100%);">
-        <img src="card4.jpg" alt="Artisan Tarts" onerror="this.style.display='none'" />
+        <img src="tarts.jpg" alt="Artisan Tarts" onerror="this.style.display='none'" />
         <span class="menu-card-emoji">🥧</span>
         <div class="menu-card-img-title">Artisan Tarts</div>
       </div>
@@ -1018,7 +1006,7 @@
     <!-- Card 5 — Brownies -->
     <div class="menu-card">
       <div class="menu-card-img" style="background: linear-gradient(135deg, #efebe9 0%, #bcaaa4 100%);">
-        <img src="card5.jpg" alt="Brownies" onerror="this.style.display='none'" />
+        <img src="brownies.jpg" alt="Brownies" onerror="this.style.display='none'" />
         <span class="menu-card-emoji">🍫</span>
         <div class="menu-card-img-title">Brownies</div>
       </div>
@@ -1036,7 +1024,7 @@
     <div class="menu-card featured">
       <div class="menu-card-featured-badge">Featured</div>
       <div class="menu-card-img" style="background: linear-gradient(135deg, #fce4ec 0%, #f48fb1 100%);">
-        <img src="card6.jpg" alt="Cheesecakes" onerror="this.style.display='none'" />
+        <img src="cheesecake.jpg" alt="Cheesecakes" onerror="this.style.display='none'" />
         <span class="menu-card-emoji">🍰</span>
         <div class="menu-card-img-title">Cheesecakes</div>
       </div>
@@ -1053,7 +1041,7 @@
     <!-- Card 7 — Gifting Boxes -->
     <div class="menu-card">
       <div class="menu-card-img" style="background: linear-gradient(135deg, #f3e5f5 0%, #ce93d8 100%);">
-        <img src="card7.jpg" alt="Gifting Boxes" onerror="this.style.display='none'" />
+        <img src="giftbox.jpg" alt="Gifting Boxes" onerror="this.style.display='none'" />
         <span class="menu-card-emoji">🎁</span>
         <div class="menu-card-img-title">Gifting Boxes</div>
       </div>
@@ -1070,7 +1058,7 @@
     <!-- Card 8 — Seasonal Specials -->
     <div class="menu-card">
       <div class="menu-card-img" style="background: linear-gradient(135deg, #e8f5e9 0%, #a5d6a7 100%);">
-        <img src="card8.jpg" alt="Seasonal Specials" onerror="this.style.display='none'" />
+        <img src="specials.jpg" alt="Seasonal Specials" onerror="this.style.display='none'" />
         <span class="menu-card-emoji">🌸</span>
         <div class="menu-card-img-title">Seasonal Specials</div>
       </div>
@@ -1087,7 +1075,7 @@
     <!-- Card 9 — Custom Orders -->
     <div class="menu-card">
       <div class="menu-card-img" style="background: linear-gradient(135deg, #fbe9e7 0%, #ffab91 100%);">
-        <img src="card9.jpg" alt="Custom Orders" onerror="this.style.display='none'" />
+        <img src="custom.jpg" alt="Custom Orders" onerror="this.style.display='none'" />
         <span class="menu-card-emoji">✨</span>
         <div class="menu-card-img-title">Custom Orders</div>
       </div>
@@ -1244,10 +1232,10 @@
             display: block;
             z-index: 1;
           }
-          /* Emoji — sits above image by default; JS hides it once image loads */
+          /* Emoji — sits above image, hidden when image loads (JS below) */
           .menu-card-emoji {
             position: relative;
-            z-index: 3;
+            z-index: 2;
           }
           /* Title overlay — dark strip at bottom of image with product name */
           .menu-card-img-title {
@@ -1267,7 +1255,7 @@
             font-size: 56px;
             line-height: 1;
             position: relative;
-            z-index: 3;
+            z-index: 1;
             filter: drop-shadow(0 2px 6px rgba(0,0,0,0.10));
           }
 
