@@ -53,9 +53,6 @@
         }
           .logo-img-wrap {
             width: 90px; height: 90px;
-            border-radius: 50%;
-            border: 2px solid var(--blush);
-            background: var(--peach);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -834,14 +831,26 @@
    * On logo load:   circle styling stripped → only the bare image remains
    * On logo error:  image hidden → circle + fallback initials stay visible
    */
-  /* Hide the emoji placeholder when a real card image loads */
+  /* Hide emoji when a real card image loads successfully */
   document.querySelectorAll('.menu-card-img img').forEach(function (img) {
+
     function hideEmoji() {
       var emoji = img.parentElement.querySelector('.menu-card-emoji');
-      if (emoji) emoji.style.display = 'none';
+      if (emoji) { emoji.style.display = 'none'; }
     }
-    if (img.complete && img.naturalWidth > 0) { hideEmoji(); }
-    else { img.addEventListener('load', hideEmoji); }
+
+    function onError() {
+      img.style.display = 'none'; /* image broken — keep emoji visible */
+    }
+
+    /* Image already loaded from cache before script ran */
+    if (img.complete) {
+      if (img.naturalWidth > 0) { hideEmoji(); }
+      else { onError(); }
+    } else {
+      img.addEventListener('load',  hideEmoji);
+      img.addEventListener('error', onError);
+    }
   });
 
   document.querySelectorAll('.aff-logo img').forEach(function (img) {
@@ -1109,6 +1118,7 @@
 
   </div>
 
+
 </section>
 
 
@@ -1250,10 +1260,10 @@
             display: block;
             z-index: 1;
           }
-          /* Emoji — sits above image, hidden when image loads (JS below) */
+          /* Emoji — sits above image by default; JS hides it once image loads */
           .menu-card-emoji {
             position: relative;
-            z-index: 2;
+            z-index: 3;
           }
           /* Title overlay — dark strip at bottom of image with product name */
           .menu-card-img-title {
@@ -1273,7 +1283,7 @@
             font-size: 56px;
             line-height: 1;
             position: relative;
-            z-index: 1;
+            z-index: 3;
             filter: drop-shadow(0 2px 6px rgba(0,0,0,0.10));
           }
 
