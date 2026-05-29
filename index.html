@@ -52,17 +52,17 @@
           gap: 14px;
         }
           .logo-img-wrap {
-            width: 90px; height: 90px;
+            width: 110px; height: 110px;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
+            overflow: visible;
             flex-shrink: 0;
           }
           .logo-img-wrap img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             object-position: center center;
             display: block;
           }
@@ -886,7 +886,8 @@
          Each card already has  onerror="this.style.display='none'"
          so if the file is missing, it gracefully falls back to the gradient.
     ═══════════════════════════════════════════════════════════════ -->
- <!-- Card 1 — Celebration Cakes -->
+
+     <!-- Card 1 — Celebration Cakes -->
     <div class="menu-card">
       <div class="menu-card-img" style="background: linear-gradient(135deg, #f8c8d8 0%, #e8a0b8 100%);">
         <img src="cakes.jpg" alt="Celebration Cakes" 
@@ -1059,7 +1060,7 @@
     </div>
 
   </div>
-  
+
 </section>
 
 
