@@ -823,64 +823,7 @@
 </section>
 
 
-<script>
-  /*
-   * Affiliation logos
-   * -----------------
-   * Default:        circle (coloured bg + border) + fallback initials visible
-   * On logo load:   circle styling stripped → only the bare image remains
-   * On logo error:  image hidden → circle + fallback initials stay visible
-   */
-  /* Hide emoji when a real card image loads successfully */
-  document.querySelectorAll('.menu-card-img img').forEach(function (img) {
 
-    function hideEmoji() {
-      var emoji = img.parentElement.querySelector('.menu-card-emoji');
-      if (emoji) { emoji.style.display = 'none'; }
-    }
-
-    function onError() {
-      img.style.display = 'none'; /* image broken — keep emoji visible */
-    }
-
-    /* Image already loaded from cache before script ran */
-    if (img.complete) {
-      if (img.naturalWidth > 0) { hideEmoji(); }
-      else { onError(); }
-    } else {
-      img.addEventListener('load',  hideEmoji);
-      img.addEventListener('error', onError);
-    }
-  });
-
-  document.querySelectorAll('.aff-logo img').forEach(function (img) {
-
-    function onLoaded() {
-      var wrap = img.parentElement;                          /* .aff-logo */
-      /* Strip circle styles so nothing frames the image */
-      wrap.style.background    = 'transparent';
-      wrap.style.border        = 'none';
-      wrap.style.borderRadius  = '0';
-      /* Hide fallback initials */
-      var fallback = wrap.querySelector('.aff-logo-fallback');
-      if (fallback) fallback.style.display = 'none';
-      /* Show the image */
-      img.style.display = 'block';
-    }
-
-    function onFailed() {
-      img.style.display = 'none';   /* circle + fallback initials remain */
-    }
-
-    /* Already cached and loaded */
-    if (img.complete) {
-      if (img.naturalWidth > 0) { onLoaded(); } else { onFailed(); }
-    } else {
-      img.addEventListener('load',  onLoaded);
-      img.addEventListener('error', onFailed);
-    }
-  });
-</script>
 
 
 <!-- ════════ FEATURE HIGHLIGHTS ════════ -->
@@ -943,8 +886,7 @@
          Each card already has  onerror="this.style.display='none'"
          so if the file is missing, it gracefully falls back to the gradient.
     ═══════════════════════════════════════════════════════════════ -->
-
-    <!-- Card 1 — Celebration Cakes -->
+ <!-- Card 1 — Celebration Cakes -->
     <div class="menu-card">
       <div class="menu-card-img" style="background: linear-gradient(135deg, #f8c8d8 0%, #e8a0b8 100%);">
         <img src="cakes.jpg" alt="Celebration Cakes" 
@@ -1117,8 +1059,7 @@
     </div>
 
   </div>
-
-
+  
 </section>
 
 
@@ -1349,5 +1290,47 @@
 
 </style>
 
+<script>
+  /* ── Runs after ALL HTML is parsed so every element exists ── */
+
+  /* 1. Menu card emojis — hide when real photo loads */
+  document.querySelectorAll('.menu-card-img img').forEach(function (img) {
+    function hideEmoji() {
+      var emoji = img.parentElement.querySelector('.menu-card-emoji');
+      if (emoji) emoji.style.display = 'none';
+    }
+    function showError() {
+      img.style.display = 'none';
+    }
+    if (img.complete && img.naturalWidth > 0) { hideEmoji(); }
+    else if (img.complete && img.naturalWidth === 0) { showError(); }
+    else {
+      img.addEventListener('load',  hideEmoji);
+      img.addEventListener('error', showError);
+    }
+  });
+
+  /* 2. Affiliation logos — strip circle when logo loads, keep circle if missing */
+  document.querySelectorAll('.aff-logo img').forEach(function (img) {
+    function onLoaded() {
+      var wrap = img.parentElement;
+      wrap.style.background   = 'transparent';
+      wrap.style.border       = 'none';
+      wrap.style.borderRadius = '0';
+      var fallback = wrap.querySelector('.aff-logo-fallback');
+      if (fallback) fallback.style.display = 'none';
+      img.style.display = 'block';
+    }
+    function onFailed() {
+      img.style.display = 'none';
+    }
+    if (img.complete && img.naturalWidth > 0) { onLoaded(); }
+    else if (img.complete && img.naturalWidth === 0) { onFailed(); }
+    else {
+      img.addEventListener('load',  onLoaded);
+      img.addEventListener('error', onFailed);
+    }
+  });
+</script>
 </body>
 </html>
