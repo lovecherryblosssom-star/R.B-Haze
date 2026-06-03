@@ -894,7 +894,7 @@
          so if the file is missing, it gracefully falls back to the gradient.
     ═══════════════════════════════════════════════════════════════ -->
 
-<!-- Card 1 — Celebration Cakes -->
+    <!-- Card 1 — Celebration Cakes -->
     <div class="menu-card">
       <div class="menu-card-img" style="background: linear-gradient(135deg, #f8c8d8 0%, #e8a0b8 100%);">
         <img src="cakes.jpg" alt="Celebration Cakes" 
@@ -1245,7 +1245,7 @@
     .explore-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 28px;
+      gap: 24px;
       max-width: 1280px;
       margin: 0 auto;
     }
@@ -1258,12 +1258,12 @@
         border: 1px solid #f0d5dc;
         box-shadow: 0 2px 16px rgba(180,60,90,0.06);
         position: relative;
-        transition: transform 0.25s, box-shadow 0.25s;
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
         cursor: pointer;
       }
       .menu-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 28px rgba(180,60,90,0.13);
+        transform: scale(1.03);
+        box-shadow: 0 8px 28px rgba(212,82,122,0.22), 0 0 0 0px transparent, 0 0 18px 4px rgba(212,82,122,0.18);
       }
 
         /* Image / colour block */
@@ -1283,7 +1283,9 @@
             object-fit: cover;
             display: block;
             z-index: 1;
+            transition: transform 0.5s ease;
           }
+
           /* Emoji — sits above image by default; JS hides it once image loads */
           .menu-card-emoji {
             position: relative;
@@ -1302,7 +1304,9 @@
             letter-spacing: 0.03em;
             padding: 28px 14px 10px;
             text-align: center;
+            transition: background 0.35s ease;
           }
+
           .menu-card-emoji {
             font-size: 56px;
             line-height: 1;
@@ -1321,7 +1325,13 @@
             font-weight: 400;
             color: var(--deep);
             margin-bottom: 6px;
+            transition: color 0.35s ease, letter-spacing 0.35s ease;
           }
+          .menu-card:hover .menu-card-body h3 {
+            color: var(--rose);
+            letter-spacing: 0.06em;
+          }
+
           .menu-card-stars {
             font-size: 13px;
             color: #f4a623;
