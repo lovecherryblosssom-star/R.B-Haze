@@ -896,8 +896,11 @@
 
        <!-- Card 1 — Celebration Cakes -->
     <div class="menu-card">
-      <div class="menu-card-img">
+      <div class="menu-card-img" style="background: linear-gradient(135deg, #f8c8d8 0%, #e8a0b8 100%);">
         <img src="cakes.jpg" alt="Celebration Cakes" 
+        onload="this.nextElementSibling.style.display='none'"
+        onerror="this.style.display='none'" />
+        <span class="menu-card-emoji">🎂</span>
         <div class="menu-card-img-title">Celebration Cakes</div>
       </div>
       <div class="menu-card-body">
