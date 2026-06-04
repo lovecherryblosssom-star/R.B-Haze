@@ -894,13 +894,10 @@
          so if the file is missing, it gracefully falls back to the gradient.
     ═══════════════════════════════════════════════════════════════ -->
 
-    <!-- Card 1 — Celebration Cakes -->
+       <!-- Card 1 — Celebration Cakes -->
     <div class="menu-card">
       <div class="menu-card-img" style="background: linear-gradient(135deg, #f8c8d8 0%, #e8a0b8 100%);">
         <img src="cakes.jpg" alt="Celebration Cakes" 
-        onload="this.nextElementSibling.style.display='none'"
-        onerror="this.style.display='none'" />
-        <span class="menu-card-emoji">🎂</span>
         <div class="menu-card-img-title">Celebration Cakes</div>
       </div>
       <div class="menu-card-body">
@@ -1258,12 +1255,12 @@
         border: 1px solid #f0d5dc;
         box-shadow: 0 2px 16px rgba(180,60,90,0.06);
         position: relative;
-        transition: transform 0.35s ease, box-shadow 0.35s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
         cursor: pointer;
       }
       .menu-card:hover {
-        transform: scale(1.03);
-        box-shadow: 0 8px 28px rgba(212,82,122,0.22), 0 0 0 0px transparent, 0 0 18px 4px rgba(212,82,122,0.18);
+        transform: translateY(-4px);
+        box-shadow: 0 10px 28px rgba(180,60,90,0.13);
       }
 
         /* Image / colour block */
@@ -1276,6 +1273,18 @@
           position: relative;
           overflow: hidden;
         }
+          /* Dark overlay — appears on hover over the image */
+          .menu-card-img::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: rgba(80,10,30,0);
+            transition: background 0.35s ease;
+            z-index: 2;
+            pointer-events: none;
+          }
+          .menu-card:hover .menu-card-img::after {
+            background: rgba(80,10,30,0.32);
+          }
           /* Real photo — sits behind emoji and title overlay */
           .menu-card-img img {
             position: absolute; inset: 0;
@@ -1284,6 +1293,9 @@
             display: block;
             z-index: 1;
             transition: transform 0.5s ease;
+          }
+          .menu-card:hover .menu-card-img img {
+            transform: scale(1.07);
           }
 
           /* Emoji — sits above image by default; JS hides it once image loads */
@@ -1425,5 +1437,459 @@
     }
   });
 </script>
+
+
+<!-- ════════ REGISTRATION SECTION ════════ -->
+<section class="register">
+
+  <div class="register-left">
+    <span class="register-tag">Place Your Order</span>
+    <h2 class="register-heading">
+      Reserve Your<br>Sweet Treats
+    </h2>
+    <p class="register-text">
+      Can't wait to indulge? Fill in your details and we'll get back to
+      you to confirm your order. Custom cakes, gifting boxes, and
+      seasonal specials available for pre-order.
+    </p>
+    <div class="register-perks">
+      <div class="register-perk">
+        <i class="fas fa-check-circle"></i>
+        <span>Same-day delivery available</span>
+      </div>
+      <div class="register-perk">
+        <i class="fas fa-check-circle"></i>
+        <span>Custom orders welcomed</span>
+      </div>
+      <div class="register-perk">
+        <i class="fas fa-check-circle"></i>
+        <span>100% Halal ingredients</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="register-right">
+    <div class="register-card">
+      <h3 class="register-card-title">Fill Your Order Details</h3>
+      <div class="register-fields">
+        <input type="text"     class="reg-input" placeholder="Your Name" />
+        <input type="text"     class="reg-input" placeholder="WhatsApp Number" />
+        <input type="text"     class="reg-input" placeholder="Phone Number" />
+        <input type="text"     class="reg-input" placeholder="Product / Item Name" />
+        <select class="reg-input reg-select">
+          <option value="" disabled selected>Select Branch</option>
+          <option>Baghbanpura Campus</option>
+          <option>Walton Campus</option>
+          <option>Queen's Campus</option>
+        </select>
+      </div>
+      <button class="reg-btn">Place My Order</button>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ════════ STATS STRIP ════════ -->
+<section class="stats">
+  <h2 class="stats-title">Our Sweet Milestones</h2>
+  <div class="stats-grid">
+    <div class="stat-item">
+      <span class="stat-num">10+</span>
+      <span class="stat-label">Years of Excellence</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">5,000+</span>
+      <span class="stat-label">Happy Customers</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">50+</span>
+      <span class="stat-label">Menu Items</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">4+</span>
+      <span class="stat-label">Branches in Lahore</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════ TOP CATEGORIES ════════ -->
+<section class="categories">
+
+  <div class="categories-heading">
+    <span class="categories-eyebrow">Browse By Type</span>
+    <h2>Top Categories</h2>
+    <div class="heading-line"></div>
+  </div>
+
+  <div class="categories-grid">
+
+    <div class="cat-card">
+      <div class="cat-card-img" style="background: linear-gradient(135deg, #f8c8d8 0%, #c97a9a 100%);">
+        <img src="cat-baked.jpg" alt="Baked Desserts" onerror="this.style.display='none'" />
+        <div class="cat-card-overlay"></div>
+        <div class="cat-card-text">
+          <span class="cat-top">Freshly Made</span>
+          <span class="cat-main">Baked Desserts</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cat-card">
+      <div class="cat-card-img" style="background: linear-gradient(135deg, #e2f5f5 0%, #3a9a9a 100%);">
+        <img src="cat-frozen.jpg" alt="Frozen Desserts" onerror="this.style.display='none'" />
+        <div class="cat-card-overlay"></div>
+        <div class="cat-card-text">
+          <span class="cat-top">Chilled & Creamy</span>
+          <span class="cat-main">Frozen Desserts</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cat-card">
+      <div class="cat-card-img" style="background: linear-gradient(135deg, #fde8ee 0%, #d4527a 100%);">
+        <img src="cat-custard.jpg" alt="Custards & Puddings" onerror="this.style.display='none'" />
+        <div class="cat-card-overlay"></div>
+        <div class="cat-card-text">
+          <span class="cat-top">Silky Smooth</span>
+          <span class="cat-main">Custards & Puddings</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cat-card">
+      <div class="cat-card-img" style="background: linear-gradient(135deg, #3e2723 0%, #d4a373 100%);">
+        <img src="cat-confections.jpg" alt="Confections & Sweets" onerror="this.style.display='none'" />
+        <div class="cat-card-overlay"></div>
+        <div class="cat-card-text">
+          <span class="cat-top">Handcrafted</span>
+          <span class="cat-main">Confections & Sweets</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="categories-btn-wrap">
+    <a href="#" class="view-all-btn">View All Menu</a>
+  </div>
+
+</section>
+
+
+<style>
+
+  /* ══════════════════════════════
+     REGISTRATION
+  ══════════════════════════════ */
+  .register {
+    background: var(--white);
+    padding: 80px;
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .register::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(212,82,122,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+    .register-left {
+      flex: 1;
+      min-width: 0;
+    }
+      .register-tag {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--teal);
+        margin-bottom: 14px;
+      }
+      .register-heading {
+        font-family: 'Fleur De Leah', cursive;
+        font-size: 54px;
+        color: var(--deep);
+        line-height: 1.2;
+        margin-bottom: 20px;
+      }
+      .register-text {
+        font-size: 14px;
+        font-weight: 300;
+        color: #555;
+        line-height: 1.9;
+        margin-bottom: 28px;
+      }
+      .register-perks {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+        .register-perk {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-size: 13.5px;
+          color: var(--mid);
+        }
+        .register-perk i {
+          color: var(--teal);
+          font-size: 15px;
+        }
+
+    .register-right {
+      flex-shrink: 0;
+      width: 460px;
+    }
+      .register-card {
+        background: var(--cream);
+        border: 1px solid #f0d5dc;
+        border-radius: 16px;
+        padding: 36px 36px 40px;
+        box-shadow: 0 4px 24px rgba(180,60,90,0.08);
+      }
+        .register-card-title {
+          font-family: 'Yesteryear', cursive;
+          font-size: 26px;
+          color: var(--deep);
+          margin-bottom: 24px;
+          text-align: center;
+        }
+        .register-fields {
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+          margin-bottom: 22px;
+        }
+          .reg-input {
+            width: 100%;
+            padding: 13px 16px;
+            border: 1.5px solid #f0d5dc;
+            border-radius: 8px;
+            background: var(--white);
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            color: #333;
+            outline: none;
+            transition: border-color 0.25s, box-shadow 0.25s;
+          }
+          .reg-input:focus {
+            border-color: var(--teal);
+            box-shadow: 0 0 0 3px rgba(58,154,154,0.12);
+          }
+          .reg-select {
+            appearance: none;
+            cursor: pointer;
+            color: #888;
+          }
+        .reg-btn {
+          width: 100%;
+          padding: 14px;
+          background: var(--rose);
+          color: var(--white);
+          font-family: 'Poppins', sans-serif;
+          font-size: 13px;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          box-shadow: 0 4px 16px rgba(212,82,122,0.35);
+          transition: background 0.25s, box-shadow 0.25s;
+        }
+        .reg-btn:hover {
+          background: var(--teal);
+          box-shadow: 0 4px 20px rgba(58,154,154,0.4);
+        }
+
+
+  /* ══════════════════════════════
+     STATS STRIP
+  ══════════════════════════════ */
+  .stats {
+    background: linear-gradient(135deg, var(--rose) 0%, var(--deep) 100%);
+    padding: 56px 80px;
+    text-align: center;
+  }
+    .stats-title {
+      font-family: 'Fleur De Leah', cursive;
+      font-size: 38px;
+      color: rgba(255,255,255,0.92);
+      margin-bottom: 36px;
+    }
+    .stats-grid {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+    }
+      .stat-item {
+        flex: 1;
+        max-width: 260px;
+        padding: 0 20px;
+        border-right: 1px solid rgba(255,255,255,0.2);
+      }
+      .stat-item:last-child { border-right: none; }
+        .stat-num {
+          display: block;
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 52px;
+          font-weight: 600;
+          color: var(--white);
+          line-height: 1;
+          margin-bottom: 8px;
+        }
+        .stat-label {
+          display: block;
+          font-size: 13px;
+          font-weight: 300;
+          color: rgba(255,255,255,0.80);
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+        }
+
+
+  /* ══════════════════════════════
+     TOP CATEGORIES
+  ══════════════════════════════ */
+  .categories {
+    background: var(--cream);
+    padding: 70px 80px 80px;
+    text-align: center;
+  }
+    .categories-heading {
+      margin-bottom: 48px;
+    }
+      .categories-eyebrow {
+        display: inline-block;
+        font-family: 'Yesteryear', cursive;
+        font-size: 18px;
+        color: var(--teal);
+        margin-bottom: 8px;
+      }
+      .categories-heading h2 {
+        font-family: 'Fleur De Leah', cursive;
+        font-size: 48px;
+        color: var(--deep);
+        margin-bottom: 14px;
+      }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: 1280px;
+      margin: 0 auto 48px;
+    }
+
+      .cat-card {
+        border-radius: 14px;
+        overflow: hidden;
+        cursor: pointer;
+        box-shadow: 0 2px 16px rgba(180,60,90,0.07);
+      }
+        .cat-card-img {
+          height: 240px;
+          position: relative;
+          overflow: hidden;
+        }
+          .cat-card-img img {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
+            z-index: 1;
+            transition: transform 0.5s ease;
+          }
+          .cat-card:hover .cat-card-img img {
+            transform: scale(1.07);
+          }
+          /* Dark overlay — D effect */
+          .cat-card-overlay {
+            position: absolute; inset: 0;
+            background: rgba(80,10,30,0.25);
+            transition: background 0.35s ease;
+            z-index: 2;
+          }
+          .cat-card:hover .cat-card-overlay {
+            background: rgba(80,10,30,0.50);
+          }
+          /* Text on category card */
+          .cat-card-text {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            z-index: 3;
+            padding: 20px 18px;
+            text-align: left;
+          }
+            .cat-top {
+              display: block;
+              font-size: 11px;
+              font-weight: 500;
+              letter-spacing: 0.14em;
+              text-transform: uppercase;
+              color: rgba(255,255,255,0.75);
+              margin-bottom: 4px;
+            }
+            .cat-main {
+              display: block;
+              font-family: 'Fleur De Leah', cursive;
+              font-size: 26px;
+              color: var(--white);
+              line-height: 1.2;
+            }
+
+    /* ── View All button — fill from top animation ── */
+    .categories-btn-wrap {
+      text-align: center;
+    }
+      .view-all-btn {
+        display: inline-block;
+        position: relative;
+        padding: 14px 48px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--rose);
+        border: 2px solid var(--rose);
+        border-radius: 4px;
+        overflow: hidden;
+        transition: color 0.4s ease;
+        text-decoration: none;
+      }
+      /* The fill layer — starts above the button, slides down on hover */
+      .view-all-btn::before {
+        content: '';
+        position: absolute;
+        top: -100%;
+        left: 0; right: 0;
+        height: 100%;
+        background: var(--rose);
+        transition: top 0.4s ease;
+        z-index: 0;
+      }
+      .view-all-btn span {
+        position: relative;
+        z-index: 1;
+      }
+      .view-all-btn:hover {
+        color: var(--white);
+      }
+      .view-all-btn:hover::before {
+        top: 0;
+      }
+
+</style>
+
 </body>
 </html>
