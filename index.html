@@ -1427,8 +1427,8 @@
       <div class="reg-single-feature">
         <div class="reg-single-left">
           <div class="reg-single-icon">
-            <i class="fas fa-birthday-cake"></i>
-          </div>
+  <img src="circle.jpg" alt="Rose Berry Haze" />
+</div>
           <div class="reg-single-text">
             <strong>Crafting Sweetness Since 2016</strong>
             <span>Handcrafted artisan desserts made fresh daily — no preservatives, no shortcuts, just pure love in every bite.</span>
@@ -1749,14 +1749,19 @@
         justify-content: center;
         flex-shrink: 0;
         font-size: 24px;
+        overflow: hidden;
         transition: background 0.3s ease, transform 0.3s ease;
+      }
+      .reg-single-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
       .reg-single-left:hover .reg-single-icon {
         background: var(--teal);
         transform: scale(1.08);
       }
-
-      .reg-single-text {
+       .reg-single-text {
         display: flex;
         flex-direction: column;
         gap: 5px;
